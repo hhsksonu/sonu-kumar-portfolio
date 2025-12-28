@@ -12,6 +12,8 @@ import fjpd from "./assets/work_logo/fjpduns.png";
 import loyalty from "./assets/work_logo/lae_rmgp.png";
 import attendance from "./assets/work_logo/asasudlac.png";
 import smartVision from "./assets/work_logo/smart_vision.png";
+import hhskBlog from "./assets/work_logo/hhsk-blog.png";
+import portfolioWeb from "./assets/work_logo/porfolio-web.png";
 
   
 export const education = [
@@ -150,11 +152,22 @@ export const projects = [
       "Streamlit",
     ],
     github: "https://github.com/hhsksonu/fake-job-detector-using-nlp",
-    webapp: "#",
+    webapp: "https://fake-job-detector-using-nlp-op3wr9fxrao2tul767qoax.streamlit.app/",
   },
 
   {
     id: 2,
+    title: "Hhsksonu Blog",
+    image: hhskBlog,
+    description:
+      "Personal blog where I write about programming, ML, and project experiences. Showcases my tutorials, insights, and technical experiments.",
+    tags: ["Python", "Django", "HTML5","CSS3", "JavaScript", "Blog"],
+    github: "https://github.com/hhsksonu/Blog-website-Django",
+    webapp: "https://hhsksonu.pythonanywhere.com/",
+  },
+
+  {
+    id: 3,
     title: "Loyalty Analytics Engine – Real-Money Gaming Platform",
     image: loyalty,
     description:
@@ -172,7 +185,18 @@ export const projects = [
   },
 
   {
-    id: 3,
+    id: 4,
+    title: "Sonu Kumar Portfolio",
+    image: portfolioWeb,
+    description:
+      "My personal portfolio website built to showcase my projects, skills, and experience. Includes multiple sections for projects, experience, education, and contact info.",
+    tags: ["React", "HTML5", "CSS3", "JavaScript","Portfolio", "Bootstrap"],
+    github: "https://github.com/hhsksonu/portfolio-website",
+    webapp: "https://hhsksonu.vercel.app/",
+  },
+
+  {
+    id: 5,
     title: "Advanced Student Attendance System using Deep Learning",
     image: attendance,
     description:
@@ -189,7 +213,7 @@ export const projects = [
   },
 
   {
-    id: 4,
+    id: 6,
     title: "Smart Vision – Object Detection System",
     image: smartVision,
     description:
@@ -204,4 +228,4 @@ export const projects = [
     github: "#",
     webapp: "#",
   },
-];  
+];
