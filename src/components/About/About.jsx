@@ -50,7 +50,7 @@ const About = () => {
 
           {/* Education */}
           <p className="text-green-300 font-semibold text-sm">
-            MCA Postgraduate 2025 · 8.5 CGPA · DY Patil University
+            MCA Postgraduate 2025 · 8.2 CGPA · DY Patil University
           </p>
 
           <p className="text-gray-300 text-base sm:text-lg max-w-xl mx-auto md:mx-0">
