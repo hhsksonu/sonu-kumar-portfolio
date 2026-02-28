@@ -1,130 +1,151 @@
 import React from "react";
 import devImage from "../../assets/profile2.png";
 import resumePDF from "../../assets/resume/Sonu_Kumar_Resume.pdf";
-import {
-  FaGithub,
-  FaLinkedin,
-  FaEnvelope,
-  FaReact,
-  FaPython,
-  FaDatabase,
-  FaCogs,
-} from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaDownload, FaArrowRight } from "react-icons/fa";
+
+const stats = [
+  { value: "6+", label: "Months Experience" },
+  { value: "10+", label: "Projects Built" },
+  { value: "15+", label: "Technologies" },
+  { value: "95%", label: "Model Accuracy" },
+];
 
 const About = () => {
   return (
     <section
       id="about"
-      className="min-h-screen flex items-center text-white relative overflow-hidden"
+      className="relative min-h-screen flex items-center"
+      style={{ paddingTop: "6rem", paddingBottom: "5rem" }}
     >
-      {/* gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-green-900/10 via-transparent to-green-500/5 pointer-events-none" />
+      <div className="max-w-6xl mx-auto px-6 w-full">
+        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
 
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center px-5 md:px-6 relative z-10 gap-14">
+          {/* LEFT */}
+          <div className="w-full lg:w-[55%] space-y-6 fade-up">
 
-        {/* LEFT */}
-        <div className="w-full md:w-1/2 space-y-6 text-center md:text-left">
+            {/* Availability badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium d1 fade-up"
+              style={{ background: "rgba(16,185,129,0.1)", border: "1px solid rgba(16,185,129,0.3)", color: "var(--em-light)", fontFamily: "DM Sans, sans-serif" }}>
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full rounded-full opacity-75 animate-ping"
+                  style={{ background: "var(--em)" }} />
+                <span className="relative inline-flex h-2 w-2 rounded-full" style={{ background: "var(--em)" }} />
+              </span>
+              Available for Hire · Immediate Joiner
+            </div>
 
-          {/* Badge */}
-          <span className="inline-flex items-center gap-2 bg-green-900/40 px-4 py-1 rounded-full text-xs sm:text-sm mx-auto md:mx-0">
-            <span className="text-yellow-400">★</span>
-            <span className="text-gray-200">
-              Full-Stack + AI Engineer | Fresher | Immediate Joiner
-            </span>
-          </span>
+            {/* Heading */}
+            <div className="fade-up d2">
+              <p className="text-sm font-medium uppercase tracking-widest mb-2"
+                style={{ color: "var(--text-muted)", fontFamily: "DM Sans" }}>
+                Hello, I'm
+              </p>
+              <h1 className="font-syne font-extrabold text-5xl sm:text-6xl md:text-7xl leading-[1.05] text-white">
+                Sonu
+              </h1>
+              <h1 className="font-syne font-extrabold text-5xl sm:text-6xl md:text-7xl leading-[1.05] gradient-text">
+                Kumar
+              </h1>
+              <h2 className="font-syne text-xl sm:text-2xl font-semibold mt-3"
+                style={{ color: "var(--text-muted)" }}>
+                Full-Stack + AI/ML Engineer
+              </h2>
+            </div>
 
-          {/* Heading */}
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-green-400">
-            Full-Stack + AI Engineer
-          </h1>
+            {/* Sub-info */}
+            <div className="flex flex-wrap gap-3 fade-up d3">
+              {["📍 Pune, India · Willing to Relocate", "🎓 MCA · DY Patil University · CGPA 8.2"].map((item) => (
+                <span key={item}
+                  className="text-xs px-3 py-1.5 rounded-full"
+                  style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)", color: "var(--text-muted)" }}>
+                  {item}
+                </span>
+              ))}
+            </div>
 
-          {/* Status */}
-          <div className="flex flex-wrap justify-center md:justify-start gap-3 text-xs sm:text-sm text-gray-300">
-            <span className="px-3 py-1 border border-green-400/40 rounded-full">
-              🟢 Available for Hire
-            </span>
-            <span className="px-3 py-1 border border-green-400/40 rounded-full">
-              📍 Pune, India | Willing to Relocate
-            </span>
+            {/* Description */}
+            <p className="text-base leading-relaxed max-w-lg fade-up d3"
+              style={{ color: "var(--text-muted)", fontFamily: "DM Sans" }}>
+              I build scalable web applications and production-ready AI systems. Passionate about turning complex problems into clean, impactful solutions — from full-stack platforms to ML pipelines with real-world results.
+            </p>
+
+            {/* CTAs */}
+            <div className="flex flex-wrap gap-4 fade-up d4">
+              <a href="#contact"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm text-black transition-all hover:shadow-em-glow"
+                style={{ background: "linear-gradient(135deg, #10b981, #34d399)", fontFamily: "DM Sans" }}>
+                Get in Touch <FaArrowRight className="text-xs" />
+              </a>
+              <a href={resumePDF} target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all hover:bg-white/5"
+                style={{ border: "1px solid rgba(16,185,129,0.4)", color: "var(--em-light)", fontFamily: "DM Sans" }}>
+                <FaDownload className="text-xs" /> View Resume
+              </a>
+            </div>
+
+            {/* Socials */}
+            <div className="flex items-center gap-4 fade-up d5">
+              {[
+                { icon: <FaGithub />, href: "https://github.com/hhsksonu/", label: "GitHub" },
+                { icon: <FaLinkedin />, href: "https://linkedin.com/in/hhsksonu/", label: "LinkedIn" },
+                { icon: <FaEnvelope />, href: "mailto:sonukumaryz463@gmail.com", label: "Email" },
+              ].map(({ icon, href, label }) => (
+                <a key={label} href={href} target="_blank" rel="noopener noreferrer"
+                  className="w-10 h-10 flex items-center justify-center rounded-xl text-lg transition-all hover:scale-110"
+                  style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)", color: "var(--text-muted)" }}
+                  onMouseEnter={e => { e.currentTarget.style.color = "var(--em-light)"; e.currentTarget.style.borderColor = "var(--em)"; e.currentTarget.style.background = "rgba(16,185,129,0.1)"; }}
+                  onMouseLeave={e => { e.currentTarget.style.color = "var(--text-muted)"; e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)"; e.currentTarget.style.background = "rgba(255,255,255,0.05)"; }}>
+                  {icon}
+                </a>
+              ))}
+            </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-5 pt-4 fade-up d5">
+              {stats.map(({ value, label }) => (
+                <div key={label} className="p-4 rounded-xl text-center"
+                  style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}>
+                  <p className="font-syne font-bold text-2xl" style={{ color: "var(--em-light)" }}>{value}</p>
+                  <p className="text-xs mt-1" style={{ color: "var(--text-muted)", fontFamily: "DM Sans" }}>{label}</p>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Education */}
-          <p className="text-green-300 font-semibold text-sm">
-            MCA Postgraduate 2025 · 8.2 CGPA · DY Patil University
-          </p>
-
-          <p className="text-gray-300 text-base sm:text-lg max-w-xl mx-auto md:mx-0">
-            Building scalable web applications and production-ready AI systems
-            with modern technologies.
-          </p>
-
-          {/* CTA */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-2">
-            <a
-              href="#contact"
-              className="bg-green-400 text-black px-6 py-3 rounded-lg font-semibold hover:bg-green-300 transition text-center"
-            >
-              Get in Touch
-            </a>
-
-            <a
-              href={resumePDF}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border border-green-400 text-green-400 px-6 py-3 rounded-lg font-semibold hover:bg-green-400 hover:text-black transition text-center"
-            >
-              View Resume
-            </a>
-          </div>
-
-          {/* Social */}
-          <div className="flex gap-6 text-2xl justify-center md:justify-start pt-2">
-            <a href="https://github.com/hhsksonu/" target="_blank" className="hover:text-green-400">
-              <FaGithub />
-            </a>
-            <a href="https://linkedin.com/in/hhsksonu/" target="_blank" className="hover:text-green-400">
-              <FaLinkedin />
-            </a>
-            <a href="mailto:sonukumaryz463@gmail.com" className="hover:text-green-400">
-              <FaEnvelope />
-            </a>
-          </div>
-
-          {/* Stats */}
-          <div className="flex flex-wrap justify-center md:justify-start gap-8 pt-6">
-            {[
-              ["6+", "Months Experience"],
-              ["10+", "Projects"],
-              ["10+", "Technologies"],
-              ["95%", "Model Accuracy"],
-            ].map(([value, label]) => (
-              <div key={label} className="text-center md:text-left">
-                <p className="text-green-400 text-xl font-bold">{value}</p>
-                <p className="text-gray-400 text-sm">{label}</p>
+          {/* RIGHT – Profile Image */}
+          <div className="w-full lg:w-[45%] flex justify-center fade-up d2">
+            <div className="relative">
+              {/* Outer glow ring */}
+              <div className="absolute inset-0 rounded-3xl"
+                style={{ background: "linear-gradient(135deg, rgba(16,185,129,0.3), rgba(245,158,11,0.15))", filter: "blur(40px)", transform: "scale(1.1)" }} />
+              {/* Image frame */}
+              <div className="relative rounded-3xl overflow-hidden float-anim"
+                style={{
+                  border: "1px solid rgba(16,185,129,0.3)",
+                  boxShadow: "0 0 60px rgba(16,185,129,0.2), 0 30px 60px rgba(0,0,0,0.5)",
+                }}>
+                <img
+                  src={devImage}
+                  alt="Sonu Kumar"
+                  className="w-[280px] sm:w-[340px] lg:w-[400px] object-cover block"
+                />
+                {/* Bottom overlay */}
+                <div className="absolute bottom-0 left-0 right-0 h-24"
+                  style={{ background: "linear-gradient(to top, rgba(3,7,18,0.7), transparent)" }} />
               </div>
-            ))}
+              {/* Floating badge */}
+              <div className="absolute -bottom-4 -right-4 px-4 py-2.5 rounded-xl text-xs font-semibold"
+                style={{ background: "rgba(3,7,18,0.9)", border: "1px solid rgba(16,185,129,0.4)", backdropFilter: "blur(12px)", color: "var(--em-light)", fontFamily: "DM Sans" }}>
+                🤖 AI/ML + Full-Stack
+              </div>
+              <div className="absolute -top-4 -left-4 px-4 py-2.5 rounded-xl text-xs font-semibold"
+                style={{ background: "rgba(3,7,18,0.9)", border: "1px solid rgba(245,158,11,0.4)", backdropFilter: "blur(12px)", color: "#f59e0b", fontFamily: "DM Sans" }}>
+                ⚡ Fresher · Open to Work
+              </div>
+            </div>
           </div>
+
         </div>
-
-        {/* RIGHT */}
-        <div className="w-full md:w-1/2 flex justify-center relative">
-
-          {/* floating icons (hidden on very small screens) */}
-          <FaReact className="hidden sm:block absolute -top-6 left-10 text-green-400 text-3xl animate-pulse" />
-          <FaPython className="hidden sm:block absolute top-10 -left-6 text-green-400 text-3xl animate-pulse" />
-          <FaDatabase className="hidden sm:block absolute bottom-10 -left-4 text-green-400 text-3xl animate-pulse" />
-          <FaCogs className="hidden sm:block absolute bottom-0 right-6 text-green-400 text-3xl animate-pulse" />
-
-          {/* Image */}
-          <div className="rounded-xl overflow-hidden border border-green-400/40 shadow-[0_0_30px_rgba(34,197,94,0.35)]">
-            <img
-              src={devImage}
-              alt="Developer"
-              className="w-[260px] sm:w-[320px] md:w-[420px] object-cover"
-            />
-          </div>
-        </div>
-
       </div>
     </section>
   );

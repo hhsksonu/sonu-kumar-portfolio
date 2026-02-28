@@ -1,132 +1,187 @@
-import React from "react";
+import React, { useState } from "react";
 
 const skillsData = {
-  "Frontend Stack": [
-    { name: "HTML", level: 80 },
-    { name: "CSS", level: 80 },
-    { name: "Bootstrap", level: 85 },
-    { name: "Tailwind CSS", level: 60 },
-  ],
-  "Backend Stack": [
+  "Backend": [
     { name: "Python", level: 95 },
     { name: "Django", level: 80 },
-    { name: "Flask", level: 80 },
-    { name: "Express.js", level: 75 },
+    { name: "Flask", level: 70 },
+    { name: "FastAPI", level: 60 },
+    { name: "Django REST Framework", level: 60 },
     { name: "REST APIs", level: 80 },
   ],
-  "AI / ML Stack": [
+  "AI / ML": [
     { name: "Machine Learning", level: 90 },
-    { name: "Computer Vision", level: 85 },
     { name: "NLP", level: 85 },
-    { name: "Feature Engineering", level: 88 },
+    { name: "LLMs", level: 50 },
+    { name: "Hugging Face", level: 70 },
+    { name: "LangChain", level: 50 },
+    { name: "RAG", level: 60 },
+    { name: "Feature Engineering", level: 60 },
+    { name: "Model Train & Testing", level: 85 },
+    { name: "Model Evaluation", level: 70 },
     { name: "Scikit-learn", level: 90 },
-    { name: "TensorFlow", level: 80 },
     { name: "XGBoost", level: 85 },
-    { name: "OpenCV", level: 82 },
   ],
   "Data & Analytics": [
     { name: "Statistics", level: 85 },
     { name: "EDA", level: 90 },
-    { name: "ETL", level: 80 },
-    { name: "NumPy", level: 90 },
+    { name: "NumPy / Pandas", level: 92 },
     { name: "Matplotlib", level: 85 },
-    { name: "Power BI", level: 75 },
-    { name: "Jupyter Notebooks", level: 95 },
+    { name: "ETL", level: 80 },
   ],
-  Databases: [
+  "Frontend": [
+    { name: "HTML5", level: 80 },
+    { name: "CSS3", level: 80 },
+    { name: "Bootstrap", level: 85 },
+    { name: "Tailwind CSS", level: 60 },
+    { name: "React.js", level: 65 },
+  ],
+  "Databases": [
     { name: "SQL", level: 88 },
     { name: "PostgreSQL", level: 82 },
     { name: "MongoDB", level: 75 },
     { name: "Microsoft SQL", level: 85 },
   ],
-  Languages: [
-    { name: "Python", level: 95 },
-    { name: "SQL", level: 88 },
-    { name: "R", level: 70 },
-    { name: "C", level: 65 },
-    { name: "C++", level: 65 },
-  ],
-  Tools: [
-    { name: "Git", level: 85 },
-    { name: "Jupyter", level: 95 },
+  "Tools & Cloud": [
+    { name: "AWS (EC2, S3, IAM)", level: 60 },
+    { name: "Jupyter Notebook", level: 90 },
+    { name: "Vercel", level: 70 },
+    { name: "Git / GitHub", level: 85 },
     { name: "VS Code", level: 90 },
     { name: "Postman", level: 88 },
-    { name: "Power BI", level: 75 },
     { name: "Excel", level: 80 },
   ],
 };
 
 const Skills = () => {
+  // Default to "Backend" so it opens on Backend tab automatically
+  const [active, setActive] = useState("Backend");
+  const categories = Object.keys(skillsData);
+  const current = skillsData[active];
+
   return (
-    <section
-      id="skills"
-      className="relative py-24 px-[6vw] md:px-[10vw] text-white"
-    >
-      {/* unified background (same as About) */}
-      <div className="absolute inset-0 bg-[#060c18]" />
-
-      <div className="relative z-10 max-w-6xl mx-auto">
-
-        {/* Section Header */}
-        <div className="text-center mb-20">
-          <h2 className="text-4xl font-extrabold tracking-wide">
-            SKILLS
+    <section id="skills" className="relative py-28">
+      <div className="max-w-5xl mx-auto px-6">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <p
+            className="text-xs font-semibold uppercase tracking-widest mb-3"
+            style={{ color: "var(--em)", fontFamily: "DM Sans" }}
+          >
+            What I Know
+          </p>
+          <h2 className="font-syne font-extrabold text-4xl sm:text-5xl text-white">
+            Technical Skills
           </h2>
-          <div className="w-28 h-1 bg-green-400 mx-auto mt-4 shadow-[0_0_18px_#00ff88]" />
-          <p className="text-gray-400 mt-5 max-w-3xl mx-auto text-lg">
-            Technical skills backed by real projects, hands-on experience, and
-            production use
+          <div
+            className="w-12 h-0.5 mx-auto mt-5 rounded-full"
+            style={{
+              background: "linear-gradient(90deg, var(--em), var(--em-light))",
+              boxShadow: "0 0 12px rgba(16,185,129,0.5)",
+            }}
+          />
+          <p
+            className="mt-5 max-w-xl mx-auto text-base leading-relaxed"
+            style={{ color: "var(--text-muted)", fontFamily: "DM Sans" }}
+          >
+            Production-grade expertise backed by real projects, hands-on
+            experience, and measurable results.
           </p>
         </div>
 
-        {/* Skills Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {Object.entries(skillsData).map(([category, skills]) => (
-            <div
-              key={category}
-              className="
-                bg-[#0b0b14]
-                border border-green-400/30
-                rounded-2xl
-                p-6 sm:p-8
-                shadow-[0_0_35px_rgba(74,222,128,0.15)]
-                hover:shadow-[0_0_45px_rgba(74,222,128,0.25)]
-                transition
-              "
+        {/* Category Tabs */}
+        <div className="flex flex-wrap justify-center gap-2.5 mb-10">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActive(cat)}
+              className="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200"
+              style={{
+                fontFamily: "DM Sans",
+                background:
+                  active === cat
+                    ? "linear-gradient(135deg, #10b981, #34d399)"
+                    : "rgba(255,255,255,0.04)",
+                color: active === cat ? "#000" : "var(--text-muted)",
+                border:
+                  active === cat
+                    ? "none"
+                    : "1px solid rgba(255,255,255,0.08)",
+                fontWeight: active === cat ? "700" : "500",
+                boxShadow:
+                  active === cat ? "0 0 20px rgba(16,185,129,0.3)" : "none",
+              }}
             >
-              <h3 className="text-xl font-semibold text-green-400 mb-8 text-center">
-                {category}
-              </h3>
-
-              <div className="space-y-5">
-                {skills.map((skill) => (
-                  <div key={skill.name}>
-                    <div className="flex justify-between mb-1">
-                      <span className="text-sm font-medium text-gray-300">
-                        {skill.name}
-                      </span>
-                      <span className="text-sm text-green-400">
-                        {skill.level}%
-                      </span>
-                    </div>
-
-                    <div className="w-full bg-[#1a1a2e] rounded-full h-2 overflow-hidden">
-                      <div
-                        className="
-                          h-2 rounded-full
-                          bg-gradient-to-r from-green-500 to-green-300
-                          shadow-[0_0_10px_rgba(74,222,128,0.6)]
-                        "
-                        style={{ width: `${skill.level}%` }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+              {cat}
+            </button>
           ))}
         </div>
 
+        {/* Skills Panel */}
+        <div
+          className="rounded-2xl p-8 sm:p-10"
+          style={{
+            background: "var(--bg-card2)",
+            border: "1px solid var(--border)",
+          }}
+        >
+          <h3
+            className="font-syne font-bold text-xl mb-8"
+            style={{ color: "var(--em-light)" }}
+          >
+            {active}
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-7">
+            {current.map((skill) => (
+              <div key={skill.name}>
+                <div className="flex justify-between mb-2.5">
+                  <span
+                    className="text-sm font-medium text-white"
+                    style={{ fontFamily: "DM Sans" }}
+                  >
+                    {skill.name}
+                  </span>
+                  <span
+                    className="text-xs font-semibold"
+                    style={{
+                      color: "var(--em-light)",
+                      fontFamily: "DM Sans",
+                    }}
+                  >
+                    {skill.level}%
+                  </span>
+                </div>
+                <div className="skill-bar-track">
+                  <div
+                    className="skill-bar-fill"
+                    style={{ width: `${skill.level}%` }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Also familiar with */}
+        <div className="mt-12 text-center">
+          <p
+            className="text-sm mb-5"
+            style={{ color: "var(--text-muted)", fontFamily: "DM Sans" }}
+          >
+            Also familiar with
+          </p>
+          <div className="flex flex-wrap justify-center gap-2">
+            {[
+              "R", "C", "C++", "SHAP", "SMOTE", "OAuth2",
+              "GSpread", "Google Colab", "YOLOv3",
+              "Haar Cascades", "pyproject.toml",
+            ].map((t) => (
+              <span key={t} className="tag-pill">
+                {t}
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

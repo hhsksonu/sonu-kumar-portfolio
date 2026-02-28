@@ -3,122 +3,85 @@ import { experiences } from "../../constants";
 
 const Experience = () => {
   return (
-    <section
-      id="experience"
-      className="relative py-24 px-[12vw]md: px-[7vw] lg: px - [16vw] bg-[#060c18] font - sans"
-    >
-      
-      
-      {/* Section Title */}
-      <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold text-white tracking-wide">
-          EXPERIENCE
-        </h2>
+    <section id="experience" className="relative py-28" style={{ background: "rgba(255,255,255,0.01)" }}>
+      <div className="max-w-5xl mx-auto px-6">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <p className="text-xs font-semibold uppercase tracking-widest mb-3"
+            style={{ color: "var(--em)", fontFamily: "DM Sans" }}>
+            Where I've Worked
+          </p>
+          <h2 className="font-syne font-extrabold text-4xl sm:text-5xl text-white">Experience</h2>
+          <div className="w-12 h-0.5 mx-auto mt-5 rounded-full"
+            style={{ background: "linear-gradient(90deg, var(--em), var(--em-light))", boxShadow: "0 0 12px rgba(16,185,129,0.5)" }} />
+          <p className="mt-5 max-w-xl mx-auto text-base"
+            style={{ color: "var(--text-muted)", fontFamily: "DM Sans" }}>
+            Hands-on roles where I've delivered real impact through engineering and AI.
+          </p>
+        </div>
 
-        <div className="w-32 h-1 bg-green-400 mx-auto mt-4"></div>
-
-        <p className="text-gray-400 mt-4 text-lg font-semibold max-w-3xl mx-auto">
-          A collection of my work experience and the roles I have taken in
-          various organizations
-        </p>
-      </div>
-
-      {/* Timeline */}
-      <div className="relative">
-        {/* Vertical line */}
-        <div className="absolute sm:left-1/2 left-0 transform -translate-x-1/2 sm:-translate-x-0 w-1 bg-green-400/40 h-full"></div>
-
-        {experiences.map((experience, index) => (
-          <div
-            key={experience.id}
-            className={`flex flex-col sm:flex-row items-center mb-16 ${index % 2 === 0 ? "sm:justify-end" : "sm:justify-start"
-              }`}
-          >
-            {/* Timeline Circle */}
-            <div className="
-              absolute sm:left-1/2 left-0
-              transform -translate-x-1/2
-              bg-[#0c0c1a]
-              border-4 border-green-400
-              w-12 h-12 sm:w-16 sm:h-16
-              rounded-full
-              flex justify-center items-center
-              z-10
-            ">
-              <img
-                src={experience.img}
-                alt={experience.company}
-                className="w-full h-full object-cover rounded-full"
-              />
-            </div>
-
-            {/* Content Card */}
-            <div
-              className={`
-                w-full sm:max-w-md
-                p-4 sm:p-8
-                rounded-2xl
-                border border-green-400/30
-                bg-[#0c0c1a]
-                backdrop-blur-md
-                shadow-[0_0_25px_rgba(0,255,85,0.15)]
-                ${index % 2 === 0 ? "sm:ml-0" : "sm:mr-0"}
-                sm:ml-44 sm:mr-44 ml-8
-                transform transition-transform duration-300 hover:scale-105
-              `}
-            >
-              {/* Header */}
-              <div className="flex items-center space-x-6">
-                <div className="w-16 h-16 bg-white rounded-md overflow-hidden">
-                  <img
-                    src={experience.img}
-                    alt={experience.company}
-                    className="w-full h-full object-cover"
-                  />
+        {/* Cards */}
+        <div className="space-y-8">
+          {experiences.map((exp) => (
+            <div key={exp.id} className="glass-card p-7 sm:p-10">
+              {/* Top */}
+              <div className="flex flex-col sm:flex-row sm:items-start gap-5 sm:gap-7">
+                {/* Logo */}
+                <div className="w-16 h-16 flex-shrink-0 rounded-xl overflow-hidden"
+                  style={{ border: "1px solid rgba(16,185,129,0.25)", background: "#fff" }}>
+                  <img src={exp.img} alt={exp.company} className="w-full h-full object-cover" />
                 </div>
 
-                <div className="flex flex-col justify-between">
-                  <h3 className="text-xl sm:text-2xl font-semibold text-white">
-                    {experience.role}
-                  </h3>
-                  <h4 className="text-sm text-gray-300">
-                    {experience.company}
-                  </h4>
-                  <p className="text-sm text-gray-500 mt-1">
-                    {experience.date}
-                  </p>
+                {/* Info */}
+                <div className="flex-1 min-w-0">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                    <div>
+                      <h3 className="font-syne font-bold text-xl text-white">{exp.role}</h3>
+                      <p className="text-sm mt-0.5" style={{ color: "var(--text-muted)", fontFamily: "DM Sans" }}>{exp.company}</p>
+                    </div>
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold flex-shrink-0"
+                      style={{ background: "rgba(16,185,129,0.1)", border: "1px solid rgba(16,185,129,0.25)", color: "var(--em-light)", fontFamily: "DM Sans" }}>
+                      📅 {exp.date}
+                    </span>
+                  </div>
+
+                  {/* Description */}
+                  <div className="mt-5 space-y-1.5">
+                    {exp.desc.trim().split("\n").filter(l => l.trim()).map((line, i) => (
+                      <div key={i} className="flex items-start gap-3 text-sm"
+                        style={{ color: "var(--text-muted)", fontFamily: "DM Sans", lineHeight: "1.6" }}>
+                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
+                          style={{ background: "var(--em)" }} />
+                        <span>{line.trim()}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Skills */}
+                  <div className="flex flex-wrap gap-2 mt-6">
+                    {exp.skills.map((skill, i) => (
+                      <span key={i} className="tag-pill">{skill}</span>
+                    ))}
+                  </div>
                 </div>
               </div>
-
-              <p className="mt-4 text-gray-400">
-                {experience.desc}
-              </p>
-
-              {/* Skills */}
-              <div className="mt-4">
-                <h5 className="font-medium text-white mb-2">Skills:</h5>
-                <ul className="flex flex-wrap">
-                  {experience.skills.map((skill, idx) => (
-                    <li
-                      key={idx}
-                      className="
-                        bg-green-400/10
-                        text-green-400
-                        px-4 py-1
-                        text-xs sm:text-sm
-                        rounded-lg
-                        mr-2 mb-2
-                        border border-green-400/30
-                      "
-                    >
-                      {skill}
-                    </li>
-                  ))}
-                </ul>
-              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+
+        {/* Open to work banner */}
+        <div className="mt-12 p-6 rounded-2xl text-center"
+          style={{ background: "linear-gradient(135deg, rgba(16,185,129,0.08), rgba(245,158,11,0.05))", border: "1px solid rgba(16,185,129,0.2)" }}>
+          <p className="font-syne font-bold text-lg text-white mb-1">Open to New Opportunities</p>
+          <p className="text-sm" style={{ color: "var(--text-muted)", fontFamily: "DM Sans" }}>
+            Actively seeking Full-Stack / AI/ML / Data Science roles. Fresher with 6+ months intern experience.
+          </p>
+          <a href="#contact"
+            className="inline-flex items-center gap-2 mt-4 px-6 py-2.5 rounded-xl text-sm font-semibold text-black"
+            style={{ background: "linear-gradient(135deg, #10b981, #34d399)", fontFamily: "DM Sans" }}>
+            Get in Touch →
+          </a>
+        </div>
       </div>
     </section>
   );

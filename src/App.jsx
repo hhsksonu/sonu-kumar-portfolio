@@ -7,17 +7,35 @@ import Work from "./components/Work/Work";
 import Education from "./components/Education/Education";
 import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
-import BlurBlob from './components/BlurBlob';
 
 const App = () => {
   return (
-    <div className="bg-[#050414]">
+    <div className="relative min-h-screen" style={{ background: "#030712" }}>
+      {/* Single unified mesh gradient — fixed so it covers the entire page always */}
+      <div
+        className="fixed inset-0 pointer-events-none z-0"
+        style={{
+          background:
+            "radial-gradient(ellipse 80% 60% at 15% 20%, rgba(16,185,129,0.07) 0%, transparent 55%), " +
+            "radial-gradient(ellipse 60% 50% at 85% 80%, rgba(245,158,11,0.04) 0%, transparent 55%), " +
+            "#030712",
+        }}
+      />
 
-       <BlurBlob position={{ top: '35%', left: '20%' }} size={{ width: '30%', height: '40%' }} />
+      {/* Subtle grid overlay — fixed, full page */}
+      <div
+        className="fixed inset-0 pointer-events-none z-0"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px), " +
+            "linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px)",
+          backgroundSize: "70px 70px",
+          opacity: 0.4,
+        }}
+      />
 
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
-      
-      <div className="relative pt-20">
+      {/* All page content on top of the unified background */}
+      <div className="relative z-10">
         <Navbar />
         <About />
         <Skills />
@@ -27,7 +45,6 @@ const App = () => {
         <Contact />
         <Footer />
       </div>
-
     </div>
   );
 };
